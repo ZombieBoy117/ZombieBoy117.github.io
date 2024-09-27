@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Nexus</title>
+    <link rel="stylesheet" href="Estilos.Css">
+    <script>
+        var carrito = [];
+        var totalProductos = 0;
+
+        // Función para mostrar/ocultar la ventana de categorías
+        function toggleCategorias() {
+            var categoriasVentana = document.getElementById('categorias-ventana');
+            categoriasVentana.style.display = categoriasVentana.style.display === 'none' || categoriasVentana.style.display === '' ? 'block' : 'none';
+        }
+        
+        // Función para agregar productos al carrito
+        function agregarAlCarrito(producto, precio) {
+            carrito.push({producto, precio});
+            totalProductos++;
+            actualizarCarrito();
+            animarCarrito();
+        }
+
+        // Elimina un producto del carrito
+        function eliminarDelCarrito(indice) {
+            carrito.splice(indice, 1); // Elimina el producto en la posición del índice
+            totalProductos--;
+            actualizarCarrito();
+            mostrarCarrito();
+        }
+
+        // Actualiza la cantidad de productos en el carrito
+        function actualizarCarrito() {
+            var carritoButton = document.getElementById('carrito-button');
+            carritoButton.innerHTML = 'Carrito 🛒 (' + totalProductos + ')';
+        }
+
+        // Muestra la ventana emergente con los productos del carrito
+        function mostrarCarrito() {
+            var carritoVentana = document.getElementById('carrito-ventana');
+            var productosCarrito = document.getElementById('productos-carrito');
+            var totalPrecio = 0;
+
+            productosCarrito.innerHTML = ''; // Limpia el contenido actual
+
+            carrito.forEach(function(item, index) {
+                productosCarrito.innerHTML += '<p>' + item.producto + ' - $' + item.precio.toFixed(2) + ' Mxn <button onclick="eliminarDelCarrito(' + index + ')">Eliminar</button></p>';
+                totalPrecio += item.precio;
+            });
+
+            // Calcular IVA del 5%
+            var iva = totalPrecio * 0.05;
+            var totalConIva = totalPrecio + iva;
+
+            productosCarrito.innerHTML += '<p><strong>Subtotal:</strong> $' + totalPrecio.toFixed(2) + ' Mxn</p>';
+            productosCarrito.innerHTML += '<p><strong>IVA (5%):</strong> $' + iva.toFixed(2) + ' Mxn</p>';
+            productosCarrito.innerHTML += '<p><strong>Total:</strong> $' + totalConIva.toFixed(2) + ' Mxn</p>';
+
+            carritoVentana.style.display = 'block';
+        }
+
+        // Animación al agregar productos al carrito
+        function animarCarrito() {
+            var carritoButton = document.getElementById('carrito-button');
+            carritoButton.classList.add('animar');
+            setTimeout(function() {
+                carritoButton.classList.remove('animar');
+            }, 1000);
+        }
+        
+        // Oculta la ventana del carrito
+        function ocultarCarrito() {
+            var carritoVentana = document.getElementById('carrito-ventana');
+            carritoVentana.style.display = 'none';
+        }
+
+        // Muestra la ventana de inicio de sesión
+        function mostrarLogin() {
+            var loginVentana = document.getElementById('login-ventana');
+            loginVentana.style.display = 'block';
+        }
+
+        // Muestra la ventana de registro
+        function mostrarRegistro() {
+            var registroVentana = document.getElementById('registro-ventana');
+            registroVentana.style.display = 'block';
+        }
+
+        // Oculta la ventana de inicio de sesión
+        function ocultarLogin() {
+            var loginVentana = document.getElementById('login-ventana');
+            loginVentana.style.display = 'none';
+        }
+
+        // Oculta la ventana de registro
+        function ocultarRegistro() {
+            var registroVentana = document.getElementById('registro-ventana');
+            registroVentana.style.display = 'none';
+        }
+
+        // Función para buscar un producto
+        function buscarProducto() {
+            var input = document.getElementById('buscar').value.toLowerCase();
+            var productos = document.querySelectorAll('.producto');
+
+            productos.forEach(function(producto) {
+                var nombreProducto = producto.querySelector('h3').innerText.toLowerCase();
+                var keywords = producto.getAttribute('data-keywords').toLowerCase();
+                
+                // Muestra el producto si el nombre o las palabras clave coinciden
+                if (nombreProducto.includes(input) || keywords.includes(input)) {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><h1>Play Nexus</h1></a>
+        </div>
+        <nav>
+
+            <!-- Menú a la izquierda -->
+            <ul class="nav-left">
+                <li><a href="#" onclick="toggleCategorias()">☶ Categorías</a></li>
+            </ul>
+
+            <!-- Barra de búsqueda centrada -->
+            <div class="buscador">
+                <input type="text" id="buscar" placeholder="Buscar producto...">
+                <button onclick="buscarProducto()">Buscar</button>
+            </div>
+
+            <!-- Botones de navegación a la derecha -->
+            <ul class="nav-right">
+                <li><a href="Inicio.html">Inicio</a></li>
+                <li><a href="Ofertas.html">Ofertas</a></li>
+                <li><a href="#" id="carrito-button" onclick="mostrarCarrito()">Carrito 🛒 (0)</a></li>
+                <li><a href="#" onclick="mostrarLogin()">👤Iniciar sesión |</a></li>
+                <li><a href="#" onclick="mostrarRegistro()">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Ventana desplegable para Categorías -->
+    <div id="categorias-ventana" style="display:none; background-color:#333333; padding:10px; color:white; position:absolute; top:100px; left:0; height:100%; z-index:1000; overflow:auto; width:300px;">
+        <center><h3>Categorías</h3></center>
+        <button onclick="window.open('Xbox.html')">Xbox</button>
+        <button onclick="window.open('Playstation.html')">Playstation</button>
+        <button onclick="window.open('Nintendo.html')">Nintendo</button>
+        <button onclick="window.open('Steam.html')">Steam</button>
+        <button onclick="window.open('Software.html')">Software</button>
+        <button onclick="window.open('JuegosMobiles.html')">Juegos Móviles</button>
+    </div>
+
+    <!-- Ventana emergente para el carrito -->
+    <div id="carrito-ventana" class="ventana-emergente">
+        <h3>Carrito de compras</h3>
+        <div id="productos-carrito"></div>
+        <p><button class="pagar">Pagar</button></p>
+        <button onclick="ocultarCarrito()">Cerrar</button>
+    </div>
+
+    <!-- Ventana de inicio de sesión -->
+    <div id="login-ventana" class="ventana-emergente">
+        <h3>Iniciar sesión</h3>
+        <p><label for="correo">Correo</label></p>
+        <input type="email" id="correo">
+        <br>
+        <p><label for="contrasena">Contraseña</label></p>
+        <input type="password" id="contrasena">
+        <br>
+        <p><button>Continuar</button></p>
+        <button onclick="ocultarLogin()">Cerrar</button>
+    </div>
+
+    <!-- Ventana de registro -->
+    <div id="registro-ventana" class="ventana-emergente">
+        <h3>Registro</h3>
+        <p><label for="nombres">Nombre(s):</label></p>
+        <input type="text" id="nombres">
+        <br>
+        <p><label for="apellido-paterno">Apellido paterno:</label></p>
+        <input type="text" id="apellido-paterno">
+        <br>
+        <p><label for="apellido-materno">Apellido materno:</label></p>
+        <input type="text" id="apellido-materno">
+        <br>
+        <p><label for="usuario">Nombre de usuario:</label></p>
+        <input type="text" id="usuario">
+        <br>
+        <p><label for="correo-registro">Correo:</label></p>
+        <input type="email" id="correo-registro">
+        <br>
+        <p><label for="contrasena-registro">Contraseña:</label></p>
+        <input type="password" id="contrasena-registro">
+        <br>
+        <p><label for="telefono">Número de celular:</label></p>
+        <input type="tel" id="telefono">
+        <br>
+        <p><button>Continuar</button></p>
+        <button onclick="ocultarRegistro()">Cerrar</button>
+    </div>
+    
+    <main>
+        <section class="hero">
+            <div id="carrusel" class="carrusel-estatico">
+                <img src="img/splatoon.jpg" alt="Imagen 1">
+                <img src="img/halo_infinite.jpg" alt="Imagen 2">
+                <img src="img/Minecraft_Java_&_Bedrock_Edition.jpg" alt="Imagen 3">
+                <img src="img/gears.png" alt="Imagen 4">
+                <img src="img/Smash.png" alt="Imagen 5">
+                <img src="img/cod-blackops3.jpg" alt="Imagen 6">
+                <img src="img/GOW.jpg" alt="Imagen 7">
+                <img src="img/resident.jpg" alt="Imagen 8">
+                <img src="img/Sons of the forest.jpg" alt="Imagen 9">
+                <img src="img/Hot_Wheels_Unleashed_2.jpg" alt="Imagen 10">
+            </div>
+        </section>        
+        <section class="productos">
+                    <!-- Texto adicional sobre Play Nexus -->
+                    <center><p class="small-text">Sobre Play Nexus</p>
+                    <h4 class="large-text">Productos digitales (Códigos)</h4>
+                    <p class="small-text">No puedo encontrar la clave
+                        Buscar preguntas frecuentes     
+                        
+                        ¿Has comprobado tu biblioteca de juegos de Play Nexus?
+                        Todos los productos comprados están disponibles en Mi biblioteca cuando inicia sesión en su cuenta.
+                        
+                        ¿No es tu compra una reserva?
+                        Comprueba si no has comprado una copia de reserva. Si el producto es una reserva (aún no se ha lanzado) obtendrás tu juego tan pronto como se publique.
+                        
+                        ¿Revisaste la carpeta de spam?
+                        A veces, nuestros mensajes de correo electrónico pueden terminar en su carpeta de spam. Asegúrate de haber buscado ahí.
+                        
+                        ¿Está comprobando la dirección de correo electrónico que ha utilizado para comprar?
+                        Por favor, asegúrese de que está comprobando la bandeja de entrada del correo electrónico 
+                        que ha utilizado para registrar la compra en nuestra página. Si crees que has cometido un error al introducir el correo electrónico, crea un ticket de entrega de productos.
+                        
+                        Compruebe si el dinero no está reservado / pendiente o si no ha sido reembolsado.
+                        Puede haber casos en los que los problemas técnicos nos impidan entregar la clave que ha comprado automáticamente. En esos casos, el dinero será reembolsado o nuestro equipo de soporte se pondrá en contacto 
+                        con usted directamente. Por favor, compruebe si aún no ha recibido un correo electrónico de ellos.<br></p></center>
+            <div class="grid-container">
+        
+    <script>
+        // Carrusel de imágenes
+        let currentImage = 0;
+            let images = document.querySelectorAll('#carrusel img');
+            setInterval(() => {
+                images[currentImage].style.display = 'none'; // Oculta la imagen actual
+                currentImage = (currentImage + 1) % images.length; // Incrementa el índice y vuelve a 0 cuando llegue al final
+                images[currentImage].style.display = 'block'; // Muestra la siguiente imagen
+        }, 3000);
+    </script>
+
+    <!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Sobre mi página</h4>
+            <ul>
+                <li><a href="Sobre nosotros.html">Sobre nosotros</a></li>
+                <li><a href="Contactanos.html">Contáctanos</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Comprar</h4>
+            <ul>
+                <li><a href="Cómo comprar.html">Cómo comprar</a></li>
+                <li><a href="Lista de juegos.html">Lista de juegos</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Ayuda</h4>
+            <ul>
+                <li><a href="Preguntas frecuentes.html">Preguntas frecuentes</a></li>
+                <li><a href="Como avctivar.html">Cómo activar tus juegos</a></li>
+                <li><a href="crear ticket.html">Crear un ticket</a></li>
+                <li><a href="Devoluciones.html">Política de devoluciones</a></li>
+            </ul>
+        </div>
+    </div>
+    <p>&copy; 2024 Play Nexus</p>
+</footer>
+</body>
+</html>

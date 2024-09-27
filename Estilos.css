@@ -1,0 +1,440 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+/* Encabezado */
+header {
+    background-color: #1a1a1a;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.logo1 {
+    display: flex;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.3s ease; /* Animación suave en hover */
+}
+
+.Imagen_Logo {
+    width: 120px; /* Ajusta el tamaño de la imagen si es necesario */
+    height: 120px;
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+/* Logo */
+.logo h1 {
+    margin: 0;
+    color: #ffcc00;
+    text-decoration: none; /* Elimina el subrayado */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animación suave en hover */
+}
+
+.logo h1:hover {
+    color: #e6b800; /* Cambia el color al hacer hover */
+    text-decoration: none; /* Elimina el subrayado */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+
+/* Menú de navegación */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Alinea el botón de categorías a la izquierda */
+.nav-left {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Alinea el resto de los botones a la derecha */
+.nav-right {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Centra la barra de búsqueda */
+.buscador {
+    flex-grow: 1; /* Hace que la barra de búsqueda tome el espacio necesario */
+    display: flex;
+    justify-content: center; /* Centra la barra de búsqueda dentro del nav */
+}
+
+/* Todos los elementos del menú */
+nav ul li {
+    margin-left: 5px;
+}
+
+/* Enlaces del menú */
+nav a {
+    color: #f1f1f1;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto hover en el menú */
+nav a:hover {
+    background-color: #ffcc00;
+    color: #121212;
+    box-shadow: 0px 4px 15px rgba(255, 204, 0, 0.5);
+    transform: scale(1.05);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Animación del botón del carrito */
+#carrito-button.animar {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-5px, 0); }
+    50% { transform: translate(5px, 0); }
+    75% { transform: translate(-5px, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Cards Carousel*/
+
+.icon-cards {
+  position: relative;
+	width: 60vw;
+	height: 40vw;
+  max-width: 380px;
+  max-height: 250px;
+  margin: 0;
+  color: white;
+	perspective: 1000px;
+  transform-origin: center;
+
+	This is the element that rotates with the animation
+
+	&__content {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+    transform-origin: center;
+		transform-style: preserve-3d;
+		transform: translateZ(-30vw) rotateY(0);
+		animation: carousel 10s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    
+    &.step-animation {
+      animation: carousel 8s infinite steps(1) forwards;
+    }
+	}
+
+	/*Individual cards*/
+
+	&__item {
+		position: absolute;
+		top: 0;
+		left: 0;
+    right: 0;
+    bottom: 0;
+		width: 60vw;
+		height: 40vw;
+    max-width: 380px;
+    max-height: 250px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.1);
+		border-radius: 6px;
+    transform-origin: center;
+
+		&:nth-child(1) {
+			background: #FDD94F;
+			transform: rotateY(0) translateZ(35vw);
+		}
+
+		&:nth-child(2) {
+			background: #F87949;
+			transform: rotateY(120deg) translateZ(35vw);
+		}
+
+		&:nth-child(3) {
+			background: #FBAB48;
+			transform: rotateY(240deg) translateZ(35vw);
+		}
+	}
+}
+
+/* Ventana desplegable de categorías */
+#categorias-ventana {
+    display: none;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    height: 10%; /* Ocupar todo el alto de la página */
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#categorias-ventana button {
+    display: block;
+    background-color: #ffcc00;
+    color: #121212;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+#categorias-ventana button:hover {
+    background-color: #ffcc00;
+    color: #121212;
+    transform: scale(1.05);
+}
+
+/* Hero section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #333;
+}
+
+.hero h2 {
+    color: #ffcc00;
+}
+
+/* Título de productos */
+.titulo-productos {
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 40px;
+    color: #ffcc00;
+}
+
+/* Grid de productos */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px;
+    padding: 20px;
+    justify-content: center; /* Centra el contenido de la cuadrícula */
+}
+
+/* Producto */
+.producto {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 500px;
+}
+
+/* Contenedor de la imagen del producto */
+.imagen-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+/* Imagen del producto */
+.producto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Información al pasar el mouse */
+.info-hover {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    transition: top 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hover en la imagen */
+.imagen-container:hover .info-hover {
+    top: 0;
+}
+
+.imagen-container:hover img {
+    transform: translateY(-20px);
+}
+
+/* Botones dentro de info-hover */
+.info-hover button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #121212;
+    font-size: 1em;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Título y precio */
+.producto h3, .producto p {
+    margin: 10px 0;
+}
+
+/* Texto de activación de key */
+.activación {
+    color: #ffcc00;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+/* Texto de cashback */
+.cashback {
+    color: #39ff14;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+/* Botón general */
+button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #121212;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover en todos los botones amarillos */
+button:hover {
+    background-color: #e6b800;
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    box-shadow: 0px 4px 15px rgba(255, 204, 0, 0.5); /* Efecto de sombra */
+}
+
+/* Ventanas emergentes (login, registro y carrito) ocultas por defecto */
+#carrito-ventana,
+#login-ventana,
+#registro-ventana {
+    display: none; /* Ocultas por defecto */
+    background-color: #333;
+    padding: 20px;
+    color: white;
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+    box-shadow: 0px 4px 15px rgba(255, 204, 0, 0.5);
+}
+
+/* Botones en ventanas emergentes */
+#carrito-ventana button,
+#login-ventana button,
+#registro-ventana button {
+    background-color: #ffcc00;
+    color: #121212;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#carrito-ventana button:hover,
+#login-ventana button:hover,
+#registro-ventana button:hover {
+    transform: scale(1.05);
+}
+
+/* Footer estilos */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 12px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    margin-bottom: 15px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #f0f0f0;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #bdbdbd;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.small-text {
+    font-size: 0.9em;
+    color: #f1f1f1;
+}
+
+.large-text {
+    font-size: 1.5em;
+    color: #ffcc00;
+    margin-top: 10px;
+}

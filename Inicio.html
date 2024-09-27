@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/Icono.png">
+    <title>Play Nexus</title>
+    <link rel="stylesheet" href="Estilos.Css">
+    <script src="https://www.paypal.com/sdk/js?client-id=AQ76OT2gwKKRAbWriut40H1-41F6M0BOATby9V9i1iMhOn-WpMJG0YM4Y7bg2TceLIrd8_-jEb5H6NTT&currency=MXN"></script>
+    <script src="Script.js"></script>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo1">
+            <h1><img class="Imagen_Logo" src="img/Faak.png" alt="Logo de Play Nexus"></h1>
+        </div>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none">
+                <h1>Play Nexus</h1>
+            </a>
+        </div>
+
+        <br><br><nav>
+            <!-- Menú a la izquierda -->
+            <ul class="nav-left">
+                <li><a href="#" onclick="toggleCategorias()">☶ Categorías</a></li>
+            </ul>
+
+            <!-- Barra de búsqueda centrada -->
+            <div class="buscador">
+                <input type="text" id="buscar" placeholder="Buscar producto...">
+                <button onclick="buscarProducto()">Buscar</button>
+            </div>
+
+            <!-- Botones de navegación a la derecha -->
+            <ul class="nav-right">
+                <li><a href="Inicio.html">Inicio</a></li>
+                <li><a href="Ofertas.html">Ofertas</a></li>
+                <li><a href="#" id="carrito-button" onclick="mostrarCarrito()">Carrito 🛒 (0)</a></li>
+                <li><a href="#" onclick="mostrarLogin()">👤Iniciar sesión |</a></li>
+                <li><a href="#" onclick="mostrarRegistro()">Registrarse</a></li>
+            </ul>
+        </nav></br></br>
+    </header>
+    
+<!-- Ventana desplegable para Categorías -->
+<div id="categorias-ventana" style="display:none; background-color:#333333; padding:10px; color:white; position:absolute; top:100px; left:0; height:100%; z-index:1000; overflow:auto; width:300px;">
+    <center><h3>Categorías</h3></center>
+    <button onclick="window.open('Xbox.html')">Xbox</button>
+    <button onclick="window.open('Playstation.html')">Playstation</button>
+    <button onclick="window.open('Nintendo.html')">Nintendo</button>
+    <button onclick="window.open('Steam.html')">Steam</button>
+    <button onclick="window.open('Software.html')">Software</button>
+    <button onclick="window.open('JuegosMobiles.html')">Juegos Móviles</button>
+    <br><button onclick="ocultarCategorías()">Cerrar</button></br>
+</div>
+
+    <!-- Ventana emergente para el carrito -->
+    <div id="carrito-ventana" class="ventana-emergente">
+        <h3>Carrito de compras</h3>
+        <div id="productos-carrito"></div>
+        <div id="paypal-button-container"></div>
+        <button onclick="ocultarCarrito()">Cerrar</button>
+    </div>
+    
+    <!-- Ventana de inicio de sesión -->
+    <div id="login-ventana" class="ventana-emergente">
+        <h3>Iniciar sesión</h3>
+        <p><label for="correo">Correo</label></p>
+        <input type="email" id="correo">
+        <br>
+        <p><label for="contrasena">Contraseña</label></p>
+        <input type="password" id="contrasena">
+        <br>
+        <p><button>Continuar</button></p>
+        <button onclick="ocultarLogin()">Cerrar</button>
+    </div>
+
+    <!-- Ventana de registro -->
+    <div id="registro-ventana" class="ventana-emergente">
+        <h3>Registro</h3>
+        <p><label for="nombres">Nombre(s):</label></p>
+        <input type="text" id="nombres">
+        <br>
+        <p><label for="apellido-paterno">Apellido paterno:</label></p>
+        <input type="text" id="apellido-paterno">
+        <br>
+        <p><label for="apellido-materno">Apellido materno:</label></p>
+        <input type="text" id="apellido-materno">
+        <br>
+        <p><label for="usuario">Nombre de usuario:</label></p>
+        <input type="text" id="usuario">
+        <br>
+        <p><label for="correo-registro">Correo:</label></p>
+        <input type="email" id="correo-registro">
+        <br>
+        <p><label for="contrasena-registro">Contraseña:</label></p>
+        <input type="password" id="contrasena-registro">
+        <br>
+        <p><label for="telefono">Número de celular:</label></p>
+        <input type="tel" id="telefono">
+        <br>
+        <p><button>Continuar</button></p>
+        <button onclick="ocultarRegistro()">Cerrar</button>
+    </div>
+
+    <main>  
+        <section class="productos">
+            <h2 class="titulo-productos">Top 10 juegos más vendidos.</h2>
+            <div class="grid-container">
+
+<!-- Producto 1 -->
+<div class="producto" data-keywords="minecraft pc bedrock java global multijugador">
+    <div class="imagen-container">
+        <img src="img/Minecraft_Java_&_Bedrock_Edition.jpg" alt="Minecraft Java & Bedrock Edition" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Minecraft Java & Bedrock', 560.60)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>Minecraft Java & Bedrock for PC</h3>
+    <p class="activación">Global</p>
+    <p>$560.60 Mxn</p>
+    <p class="cashback">10% Cashback</p>
+</div>
+
+<!-- Producto 2 -->
+<div class="producto" data-keywords="Halo Infinite global multijugador">
+    <div class="imagen-container">
+        <img src="img/halo_infinite.jpg" alt="halo_infinite" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Halo Infinite', 799.90)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>Halo Infinite for Xbox</h3>
+    <p class="activación">Global</p>
+    <p>$799.90 Mxn</p>
+    <p class="cashback">5% Cashback</p>
+</div>
+<!-- Producto 3 -->
+<div class="producto" data-keywords="Gear of War 5 global multijugador">
+    <div class="imagen-container">
+        <img src="img/gears.png" alt="Gear of War 5" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Gear of War 5', .60)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>Gear of War 5 for Xbox</h3>
+    <p class="activación">Global</p>
+    <p>$320.60 Mxn</p>
+    <p class="cashback">5% Cashback</p>
+</div>
+
+<!-- Producto 4 -->
+<div class="producto" data-keywords="Sons of the forest global multijugador">
+    <div class="imagen-container">
+        <img src="img/Sons of the forest.jpg" alt="Sons of the forest" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Sons of the forest', 150.80)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>Sons of the forest for Steam</h3>
+    <p class="activación">Global</p>
+    <p>$150.80 Mxn</p>
+    <p class="cashback">10% Cashback</p>
+</div>
+
+<!-- Producto 5 -->
+<div class="producto" data-keywords="splatoon 3 global multijugador">
+    <div class="imagen-container">
+        <img src="img/splatoon.jpg" alt="splatoon 3" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('splatoon 3', 750.60)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>splatoon 3 for Nintendo Switch</h3>
+    <p class="activación">Global</p>
+    <p>$750.60 Mxn</p>
+    <p class="cashback">10% Cashback</p>
+</div>
+
+<!-- Producto 6 -->
+<div class="producto" data-keywords="Resident Evil 2 remake global multijugador">
+    <div class="imagen-container">
+        <img src="img/resident.jpg" alt="Resident Evil 2 remake" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Resident Evil 2 remake', 820.80)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>Resident Evil 2 remake for Steam</h3>
+    <p class="activación">Global</p>
+    <p>$820.80 Mxn</p>
+    <p class="cashback">5% Cashback</p>
+</div>
+
+<!-- Producto 7 -->
+<div class="producto" data-keywords="Call of duty Black ops 3 global multijugador">
+    <div class="imagen-container">
+        <img src="img/cod-blackops3.jpg" alt="Call of duty Black ops 3" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Call of duty Black ops 3', 635.60)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>Call of duty Black ops 3 for Xbox</h3>
+    <p class="activación">Global</p>
+    <p>$635.60 Mxn</p>
+    <p class="cashback">10% Cashback</p>
+</div>
+
+<!-- Producto 8 -->
+<div class="producto" data-keywords="God of War Ragnarok global multijugador">
+    <div class="imagen-container">
+        <img src="img/GOW.jpg" alt="God of War Ragnarok" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('God of War Ragnarok', 1200.90)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>God of War Ragnarok for Play Station 5</h3>
+    <p class="activación">Global</p>
+    <p>$1200.90 Mxn</p>
+    <p class="cashback">5% Cashback</p>
+</div>
+
+<!-- Producto 9 -->
+<div class="producto" data-keywords="Smash Bros Ultimate global multijugador">
+    <div class="imagen-container">
+        <img src="img/Smash.png" alt="Smash Bros Ultimate" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Smash Bros Ultimate', 719.80)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>Smash Bros Ultimate for Nintendo Switch</h3>
+    <p class="activación">Global</p>
+    <p>$719.80 Mxn</p>
+    <p class="cashback">10% Cashback</p>
+</div>
+
+<!-- Producto 10 -->
+<div class="producto" data-keywords="Hot wheels Unleashed 2 global multijugador">
+    <div class="imagen-container">
+        <img src="img/Hot_Wheels_Unleashed_2.jpg" alt="Hot wheels Unleashed 2" width="300" height="400">
+        <div class="info-hover">
+            <h3>¡¡Stock 💪!!</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Minecraft Java & Bedrock', 999.90)">Agregar al carrito</button>
+            <button class="comprar-ahora">Comprar ahora</button>
+        </div>
+    </div>
+    <h3>Hot wheels Unleashed 2 for Steam</h3>
+    <p class="activación">Global</p>
+    <p>$999.90 Mxn</p>
+    <p class="cashback">10% Cashback</p>
+    </div>
+        </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Sobre mi página</h4>
+            <ul>
+                <li><a href="Sobre nosotros.html">Sobre nosotros</a></li>
+                <li><a href="Contactanos.html">Contáctanos</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Comprar</h4>
+            <ul>
+                <li><a href="Cómo comprar.html">Cómo comprar</a></li>
+                <li><a href="Lista de juegos.html">Lista de juegos</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Ayuda</h4>
+            <ul>
+                <li><a href="Preguntas frecuentes.html">Preguntas frecuentes</a></li>
+                <li><a href="Como activar.html">Cómo activar tus juegos</a></li>
+                <li><a href="crear ticket.html">Crear un ticket</a></li>
+                <li><a href="Devoluciones.html">Política de devoluciones</a></li>
+            </ul>
+        </div>
+    </div>
+    <p>&copy; 2024 Play Nexus</p>
+</footer>
+<script src="Obtener el total del carrito.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/Icono.png">
+    <title>Play Nexus</title>
+    <link rel="stylesheet" href="Estilos.Css">
+    <script src="https://www.paypal.com/sdk/js?client-id=AZ_HhYP3Bv1POCiHhVLgiuPzXXH3HoWHLqqZrXvS3NSeCb0TbN8_yCSdOT5i0NvPWDlvph9WSRWT1_S8&currency=MXN"></script>
+    <script src="Script.js"></script>
+</head>
+
+<body>
+
+    <header>
+
+      <div class="logo1">
+            <h1><img class="Imagen_Logo" src="img/Faak.png" alt="Logo de Play Nexus"></h1>
+        </div>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none">
+            <h1>Play Nexus</h1>
+            </a>
+        </div>
+
+        <br><br><nav>
+
+            <!-- Menú a la izquierda -->
+            <ul class="nav-left">
+                <li><a href="#" onClick="toggleCategorias()">☶ Categorías</a></li>
+            </ul>
+
+            <!-- Botones de navegación a la derecha -->
+            <ul class="nav-right">
+                <li><a href="Inicio.html">Inicio</a></li>
+                <li><a href="Ofertas.html">Ofertas</a></li>
+                <li><a href="#" id="carrito-button" onClick="mostrarCarrito()">Carrito 🛒 (0)</a></li>
+                <li><a href="#" onClick="mostrarLogin()">👤Iniciar sesión |</a></li>
+                <li><a href="#" onClick="mostrarRegistro()">Registrarse</a></li>
+            </ul>
+        </nav></br></br>
+    </header>
+    
+<!-- Ventana desplegable para Categorías -->
+<div id="categorias-ventana" style="display:none; background-color:#333333; padding:10px; color:white; position:absolute; top:100px; left:0; height:100%; z-index:1000; overflow:auto; width:300px;">
+    <center><h3>Categorías</h3></center>
+    <button onClick="window.open('Xbox.html')">Xbox</button>
+    <button onClick="window.open('Playstation.html')">Playstation</button>
+    <button onClick="window.open('Nintendo.html')">Nintendo</button>
+    <button onClick="window.open('Steam.html')">Steam</button>
+    <button onClick="window.open('Software.html')">Software</button>
+    <button onClick="window.open('JuegosMobiles.html')">Juegos Móviles</button>
+    <br><button onClick="ocultarCategorías()">Cerrar</button></br>
+</div>
+
+    <!-- Ventana emergente para el carrito -->
+    <div id="carrito-ventana" class="ventana-emergente">
+        <h3>Carrito de compras</h3>
+        <div id="productos-carrito"></div>
+        <div id="paypal-button-container"></div>
+        <button onClick="ocultarCarrito()">Cerrar</button>
+    </div>
+
+    <!-- Ventana de inicio de sesión -->
+    <div id="login-ventana" class="ventana-emergente">
+        <h3>Iniciar sesión</h3>
+        <p><label for="correo">Correo</label></p>
+        <input type="email" id="correo">
+        <br>
+        <p><label for="contrasena">Contraseña</label></p>
+        <input type="password" id="contrasena">
+        <br>
+        <p><button>Continuar</button></p>
+        <button onClick="ocultarLogin()">Cerrar</button>
+    </div>
+
+    <!-- Ventana de registro -->
+    <div id="registro-ventana" class="ventana-emergente">
+        <h3>Registro</h3>
+        <p><label for="nombres">Nombre(s):</label></p>
+        <input type="text" id="nombres">
+        <br>
+        <p><label for="apellido-paterno">Apellido paterno:</label></p>
+        <input type="text" id="apellido-paterno">
+        <br>
+        <p><label for="apellido-materno">Apellido materno:</label></p>
+        <input type="text" id="apellido-materno">
+        <br>
+        <p><label for="usuario">Nombre de usuario:</label></p>
+        <input type="text" id="usuario">
+        <br>
+        <p><label for="correo-registro">Correo:</label></p>
+        <input type="email" id="correo-registro">
+        <br>
+        <p><label for="contrasena-registro">Contraseña:</label></p>
+        <input type="password" id="contrasena-registro">
+        <br>
+        <p><label for="telefono">Número de celular:</label></p>
+        <input type="tel" id="telefono">
+        <br>
+        <p><button>Continuar</button></p>
+        <button onClick="ocultarRegistro()">Cerrar</button>
+    </div>
+
+      <!-- TEXTO -->
+    <h4 align="center"><span class="activación Estilo10">Tu fuente definitiva de entretenimiento digital.</span></h4>
+    <p align="center">&nbsp;</p>
+    <p align="center">&nbsp;</p>
+    <p align="center">¡Descubramos juntos el placer de jugar!<br>
+      Ya sea en PC, consolas o dispositivos móviles, te respaldamos con los mejores productos a precios asequibles, solo de vendedores confiables.</p>
+    <p align="center">&nbsp;</p>
+    <p>
+
+
+      <!-- Footer -->
+    </p>
+    <p>&nbsp; </p>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h4>Sobre mi página</h4>
+          <ul>
+            <li><a href="Sobre nosotros.html">Sobre nosotros</a></li>
+            <li><a href="Contactanos.html">Contáctanos</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Comprar</h4>
+          <ul>
+            <li><a href="Cómo comprar.html">Cómo comprar</a></li>
+            <li><a href="Lista de juegos.html">Lista de juegos</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Ayuda</h4>
+          <ul>
+            <li><a href="Preguntas frecuentes.html">Preguntas frecuentes</a></li>
+            <li><a href="Como activar.html">Cómo activar tus juegos</a></li>
+            <li><a href="crear ticket.html">Crear un ticket</a></li>
+            <li><a href="Devoluciones.html">Política de devoluciones</a></li>
+          </ul>
+        </div>
+      </div>
+      <p>&copy; 2024 Play Nexus</p>
+    </footer>
+    <script src="Obtener el total del carrito.js"></script>
+</body>
+</html>
